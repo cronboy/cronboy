@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/13/16
- * Time: 3:49 AM
+ * Time: 3:49 AM.
  */
-
 namespace Cronboy\Cronboy\Exceptions;
 
 use Exception;
 
 /**
- * Class ScheduleTimeNotSetException
- * @package Cronboy\Cronboy\Exceptions
+ * Class ScheduleTimeNotSetException.
  */
-class InvalidScheduleTimeException extends Exception {}
+class InvalidScheduleTimeException extends Exception
+{
+}

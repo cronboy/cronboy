@@ -3,19 +3,16 @@
  * Created by PhpStorm.
  * User: stas
  * Date: 12.10.16
- * Time: 23:56
+ * Time: 23:56.
  */
-
 namespace Cronboy\Cronboy\Services;
-
 
 use Closure;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**
- * Class TaskActionInvoker
- * @package Cronboy\Cronboy\Services
+ * Class TaskActionInvoker.
  */
 class TaskActionInvoker
 {
@@ -23,6 +20,7 @@ class TaskActionInvoker
 
     /**
      * @param \Closure|\Illuminate\Contracts\Queue\Job
+     *
      * @return mixed
      */
     public function run($taskAction)
@@ -33,6 +31,7 @@ class TaskActionInvoker
 
         if ($taskAction instanceof ShouldQueue) {
             $this->dispatch($taskAction);
+
             return;
         }
 

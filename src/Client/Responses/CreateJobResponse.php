@@ -3,18 +3,15 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/1/16
- * Time: 2:10 AM
+ * Time: 2:10 AM.
  */
-
 namespace Cronboy\Cronboy\Client\Responses;
 
-
-use GuzzleHttp\Psr7\Response;
 use Cronboy\Cronboy\Client\Exceptions\InvalidCronboySaaSResponse;
+use GuzzleHttp\Psr7\Response;
 
 /**
- * Class CreateEventResponse
- * @package Cronboy\Cronboy\Client\Responses
+ * Class CreateEventResponse.
  */
 class CreateJobResponse
 {
@@ -25,7 +22,9 @@ class CreateJobResponse
 
     /**
      * CreateEventResponse constructor.
+     *
      * @param Response $response
+     *
      * @throws InvalidCronboySaaSResponse
      */
     public function __construct(Response $response)
@@ -34,7 +33,7 @@ class CreateJobResponse
             $response->getBody(), true
         );
 
-        if (!array_key_exists('id', $this->response)){
+        if (!array_key_exists('id', $this->response)) {
             throw new InvalidCronboySaaSResponse(\GuzzleHttp\json_encode($this->response));
         }
     }

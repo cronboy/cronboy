@@ -4,7 +4,7 @@
  * Created by PhpStorm.
  * User: stas
  * Date: 13.10.16
- * Time: 2:23
+ * Time: 2:23.
  */
 class RequestRunnerTest extends PHPUnit_Framework_TestCase
 {
@@ -36,7 +36,7 @@ class RequestRunnerTest extends PHPUnit_Framework_TestCase
     public function it_unserializes_and_runs_job()
     {
         $serializer = new \Cronboy\Cronboy\Services\SerializerService();
-        $serializedJob = $serializer->serializeJob(new RequestRunnerDummyJob);
+        $serializedJob = $serializer->serializeJob(new RequestRunnerDummyJob());
 
         $request = new \Illuminate\Http\Request([], [
             'job' => $serializedJob,

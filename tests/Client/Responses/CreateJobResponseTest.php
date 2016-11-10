@@ -3,14 +3,12 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/4/16
- * Time: 12:36 AM
+ * Time: 12:36 AM.
  */
-
 use Cronboy\Cronboy\Client\Responses\CreateJobResponse;
 
-
 /**
- * Class CreateJobResponseTest
+ * Class CreateJobResponseTest.
  */
 class CreateJobResponseTest extends PHPUnit_Framework_TestCase
 {
@@ -22,9 +20,9 @@ class CreateJobResponseTest extends PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(33, $createJobResponse->id());
-     }
+    }
 
-     /** @test */
+    /** @test */
     public function it_throws_an_exception_when_not_success_response_was_received()
     {
         $this->expectException(\Cronboy\Cronboy\Client\Exceptions\InvalidCronboySaaSResponse::class);

@@ -3,18 +3,15 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 9/30/16
- * Time: 1:59 AM
+ * Time: 1:59 AM.
  */
-
 namespace Cronboy\Cronboy\Client\Params;
-
 
 use Carbon\Carbon;
 use Cronboy\Cronboy\Client\Exceptions\InvalidArgumentsException;
 
 /**
- * Class CreateEvent
- * @package Cronboy\Cronboy\Client\Params
+ * Class CreateEvent.
  */
 class CreateJob
 {
@@ -30,27 +27,28 @@ class CreateJob
         'url'               => 'required|regex:/^[\w\/.-_~!$&\'()*+,;=:@]+$/',
         'verb'              => 'required|in:GET,POST',
         'time_to_execute'   => 'required|date',
-        'params'            => 'array'
+        'params'            => 'array',
     ];
 
     /**
      * CreateEvent constructor.
+     *
      * @param string $url
      * @param string $verb
      * @param Carbon $time_to_execute
-     * @param array $params
+     * @param array  $params
      */
     public function __construct($url, $verb, Carbon $time_to_execute, array $params)
     {
-        # Format request params
+        // Format request params
         $this->data = [
-            'url'  => $url,
-            'verb' => $verb,
-            'params' => $params,
+            'url'             => $url,
+            'verb'            => $verb,
+            'params'          => $params,
             'time_to_execute' => $time_to_execute->tz('UTC'),
         ];
 
-        # Validate params
+        // Validate params
         $this->validate();
     }
 
@@ -77,7 +75,7 @@ class CreateJob
      */
     public function toJson()
     {
-        # Convert Carbon object to string for API call
+        // Convert Carbon object to string for API call
         $this->data['time_to_execute'] = $this->data['time_to_execute']->toDateTimeString();
 
         return \GuzzleHttp\json_encode(
@@ -90,7 +88,7 @@ class CreateJob
      */
     public function toArray()
     {
-        # Convert Carbon object to string for API call
+        // Convert Carbon object to string for API call
         $this->data['time_to_execute'] = $this->data['time_to_execute']->toDateTimeString();
 
         return $this->data;

@@ -2,13 +2,12 @@
 
 namespace Cronboy\Cronboy;
 
-use Illuminate\Support\ServiceProvider;
 use Cronboy\Cronboy\Client\CronboySaaS;
 use Cronboy\Cronboy\Services\SerializerService;
+use Illuminate\Support\ServiceProvider;
 
 /**
- * Class CronboyServiceProvider
- * @package Cronboy\Cronboy
+ * Class CronboyServiceProvider.
  */
 class CronboyServiceProvider extends ServiceProvider
 {
@@ -17,12 +16,12 @@ class CronboyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        #   config
-        $this->publishes([__DIR__ . '/../config/cronboy.php' => config_path('cronboy.php'),]);
+        //   config
+        $this->publishes([__DIR__.'/../config/cronboy.php' => config_path('cronboy.php')]);
 
-        #   routes
+        //   routes
         if (!$this->app->routesAreCached()) {
-            require __DIR__ . '/Http/routes.php';
+            require __DIR__.'/Http/routes.php';
         }
     }
 
@@ -34,7 +33,7 @@ class CronboyServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/cronboy.php', 'cronboy'
+            __DIR__.'/../config/cronboy.php', 'cronboy'
         );
 
         $this->app->singleton(Cronboy::class, function ($app) {

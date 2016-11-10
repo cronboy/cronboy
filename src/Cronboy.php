@@ -3,23 +3,20 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/12/16
- * Time: 2:18 AM
+ * Time: 2:18 AM.
  */
-
 namespace Cronboy\Cronboy;
 
-
 use Carbon\Carbon;
-use DateTimeZone;
+use Cronboy\Cronboy\Client\CronboySaaS;
 use Cronboy\Cronboy\Exceptions\InvalidArgumentException;
 use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;
-use Cronboy\Cronboy\Client\CronboySaaS;
 use Cronboy\Cronboy\Services\RequestRunner;
 use Cronboy\Cronboy\Services\SerializerService;
+use DateTimeZone;
 
 /**
- * Class Cronboy
- * @package Cronboy\Cronboy
+ * Class Cronboy.
  */
 class Cronboy
 {
@@ -45,7 +42,8 @@ class Cronboy
 
     /**
      * Scheduler constructor.
-     * @param CronboySaaS $cronboySaaS
+     *
+     * @param CronboySaaS       $cronboySaaS
      * @param SerializerService $serializer
      */
     public function __construct(CronboySaaS $cronboySaaS, SerializerService $serializer)
@@ -56,8 +54,9 @@ class Cronboy
     }
 
     /**
-     * @param Carbon|string $timeToExecute
+     * @param Carbon|string       $timeToExecute
      * @param string|DateTimeZone $timezone
+     *
      * @return $this
      */
     public function at($timeToExecute, $timezone = null)
@@ -67,11 +66,13 @@ class Cronboy
         }
 
         $this->scheduleTime = $timeToExecute;
+
         return $this;
     }
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function afterOneMinute($timezone = null)
@@ -81,6 +82,7 @@ class Cronboy
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function afterFiveMinutes($timezone = null)
@@ -90,6 +92,7 @@ class Cronboy
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function afterTenMinutes($timezone = null)
@@ -99,6 +102,7 @@ class Cronboy
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function afterHalfAnHour($timezone = null)
@@ -108,6 +112,7 @@ class Cronboy
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function afterAnHour($timezone = null)
@@ -117,6 +122,7 @@ class Cronboy
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function afterThreeHour($timezone = null)
@@ -126,6 +132,7 @@ class Cronboy
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function aWeekLater($timezone = null)
@@ -135,6 +142,7 @@ class Cronboy
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function afterTwoWeeks($timezone = null)
@@ -144,6 +152,7 @@ class Cronboy
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function aMonthLater($timezone = null)
@@ -153,6 +162,7 @@ class Cronboy
 
     /**
      * @param string|DateTimeZone $timezone
+     *
      * @return Cronboy
      */
     public function inThreeMonths($timezone = null)
@@ -162,16 +172,18 @@ class Cronboy
 
     /**
      * @param string $verb
+     *
      * @return $this
      */
     public function via($verb = 'POST')
     {
         $this->verb = $verb;
+
         return $this;
     }
 
     /**
-     * Initialize a verb for call method with default value
+     * Initialize a verb for call method with default value.
      */
     protected function resetVerb()
     {
@@ -181,26 +193,28 @@ class Cronboy
     /**
      * @param $url
      * @param array $params
-     * @param null $time
-     * @return mixed
+     * @param null  $time
+     *
      * @throws InvalidScheduleTimeException
+     *
+     * @return mixed
      */
     public function call($url, array $params, $time = null)
     {
-        if (!is_null($time)){
+        if (!is_null($time)) {
             $this->at($time);
         }
 
-        if (is_null($this->scheduleTime)){
-            throw new InvalidScheduleTimeException("You must set schedule time before you are attempting to schedule a task with some of this methods: at, afterOneMinute...");
+        if (is_null($this->scheduleTime)) {
+            throw new InvalidScheduleTimeException('You must set schedule time before you are attempting to schedule a task with some of this methods: at, afterOneMinute...');
         }
 
-        # Create an schedule event in service
+        // Create an schedule event in service
         $taskId = $this->cronboySaaS->createJob($url, $this->verb, $params, $this->scheduleTime);
 
-        # Reset schedule time for another call
+        // Reset schedule time for another call
         $this->scheduleTime = null;
-        # Reset verb for another call
+        // Reset verb for another call
         $this->resetVerb();
 
         return $taskId;
@@ -209,14 +223,16 @@ class Cronboy
     /**
      * @param $task
      * @param null $time
-     * @return mixed
+     *
      * @throws InvalidArgumentException
+     *
+     * @return mixed
      */
     public function dispatch($task, $time = null)
     {
         if ($task instanceof \Closure) {
             $params[RequestRunner::CLOSURE_PARAM_KEY] = $this->serializer->serializeClosure($task);
-        } elseif (is_object($task)){
+        } elseif (is_object($task)) {
             $params[RequestRunner::JOB_PARAM_KEY] = $this->serializer->serializeJob($task);
         } else {
             throw new InvalidArgumentException('Task must be a closure or an object');

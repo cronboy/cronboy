@@ -3,17 +3,14 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/14/16
- * Time: 2:08 AM
+ * Time: 2:08 AM.
  */
-
 namespace Cronboy\Cronboy\Tests\stubs;
-
 
 use Illuminate\Contracts\Queue\Job;
 
 /**
- * Class ScheduleJob
- * @package stubs
+ * Class ScheduleJob.
  */
 class ScheduleJob implements Job
 {
@@ -50,7 +47,8 @@ class ScheduleJob implements Job
     /**
      * Release the job back into the queue.
      *
-     * @param  int $delay
+     * @param int $delay
+     *
      * @return void
      */
     public function release($delay = 0)
@@ -101,7 +99,8 @@ class ScheduleJob implements Job
     /**
      * Call the failed method on the job instance.
      *
-     * @param  \Throwable $e
+     * @param \Throwable $e
+     *
      * @return void
      */
     public function failed($e)

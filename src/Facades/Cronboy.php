@@ -3,17 +3,14 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/17/16
- * Time: 12:17 AM
+ * Time: 12:17 AM.
  */
-
 namespace Cronboy\Cronboy\Facades;
-
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Cronboy
- * @package Cronboy\Cronboy\Facades
+ * Class Cronboy.
  */
 class Cronboy extends Facade
 {
@@ -22,5 +19,8 @@ class Cronboy extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return \Cronboy\Cronboy\Cronboy::class; }
+    protected static function getFacadeAccessor()
+    {
+        return \Cronboy\Cronboy\Cronboy::class;
+    }
 }

@@ -2,14 +2,13 @@
 
 namespace Cronboy\Cronboy\Services;
 
-use Illuminate\Contracts\Queue\Job;
 use Cronboy\Cronboy\Exceptions\ClosureUnserializationException;
+use Illuminate\Contracts\Queue\Job;
 use SuperClosure\Exception\ClosureUnserializationException as SuperClosureUnserializationException;
 use SuperClosure\Serializer;
 
 /**
- * Class SerializerService
- * @package Cronboy\Cronboy\Services
+ * Class SerializerService.
  */
 class SerializerService
 {
@@ -20,7 +19,9 @@ class SerializerService
 
     /**
      * SerializerService constructor.
+     *
      * @TODO refactor, $signature param is only used when working with \Closure methods
+     *
      * @param string $signature
      */
     public function __construct($signature = null)
@@ -30,6 +31,7 @@ class SerializerService
 
     /**
      * @param \Closure $closure
+     *
      * @return string
      */
     public function serializeClosure(\Closure $closure)
@@ -39,6 +41,7 @@ class SerializerService
 
     /**
      * @param Job $job
+     *
      * @return string
      */
     public function serializeJob($job)
@@ -48,7 +51,9 @@ class SerializerService
 
     /**
      * @param string $serializedClosure
+     *
      * @throws ClosureUnserializationException
+     *
      * @return mixed
      */
     public function unserializeClosure($serializedClosure)
@@ -62,7 +67,9 @@ class SerializerService
 
     /**
      * @param string $serializedJob
+     *
      * @throws ClosureUnserializationException
+     *
      * @return Job
      */
     public function unserializeJob($serializedJob)

@@ -3,18 +3,16 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/12/16
- * Time: 2:20 AM
+ * Time: 2:20 AM.
  */
-
 use Carbon\Carbon;
-use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;
 use Cronboy\Cronboy\Cronboy;
+use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;
 use Cronboy\Cronboy\Services\RequestRunner;
 use Mockery as m;
 
-
 /**
- * Class SchedulerTest
+ * Class SchedulerTest.
  */
 class CronboyTest extends PHPUnit_Framework_TestCase
 {
@@ -34,11 +32,11 @@ class CronboyTest extends PHPUnit_Framework_TestCase
     protected $serializer;
 
     /**
-     * Create scheduler and notifierClient spy before each test
+     * Create scheduler and notifierClient spy before each test.
      */
     protected function setUp()
     {
-        # Time must be relative to test start
+        // Time must be relative to test start
         Carbon::setTestNow(Carbon::now());
 
         $this->cronboySaaSClient = m::spy(\Cronboy\Cronboy\Client\CronboySaaS::class);
@@ -47,7 +45,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Clear resources after each test
+     * Clear resources after each test.
      */
     protected function tearDown()
     {
@@ -69,7 +67,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
             ->afterOneMinute()
             ->call($scheduleWebhook['url'], $scheduleWebhook['params']);
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
             ->with($scheduleWebhook['url'], 'POST', $scheduleWebhook['params'], m::on(function ($time_to_execute) {
                 return $time_to_execute->eq(Carbon::now()->addMinute());
             }));
@@ -84,8 +82,8 @@ class CronboyTest extends PHPUnit_Framework_TestCase
             ->afterFiveMinutes()
             ->call($scheduleWebhook['url'], $scheduleWebhook['params']);
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
-            ->with($scheduleWebhook['url'], 'POST', $scheduleWebhook['params'],  m::on(function ($time_to_execute) {
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
+            ->with($scheduleWebhook['url'], 'POST', $scheduleWebhook['params'], m::on(function ($time_to_execute) {
                 return $time_to_execute->eq(Carbon::now()->addMinute(5));
             }));
     }
@@ -99,7 +97,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
             ->at(Carbon::now()->addHours(5))
             ->call($scheduleWebhook['url'], $scheduleWebhook['params']);
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
             ->with($scheduleWebhook['url'], 'POST', $scheduleWebhook['params'], m::on(function ($time_to_execute) {
                 return $time_to_execute->eq(Carbon::now()->addHours(5));
             }));
@@ -114,7 +112,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
             ->at('+ 5 hours')
             ->call($scheduleWebhook['url'], $scheduleWebhook['params']);
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
             ->with($scheduleWebhook['url'], 'POST', $scheduleWebhook['params'], m::on(function ($time_to_execute) {
                 return $time_to_execute->eq(Carbon::now()->addHour(5));
             }));
@@ -128,7 +126,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
         $this->cronboy
             ->call($scheduleWebhook['url'], $scheduleWebhook['params'], Carbon::now()->addHours(5));
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
             ->with($scheduleWebhook['url'], 'POST', $scheduleWebhook['params'], m::on(function ($time_to_execute) {
                 return $time_to_execute->eq(Carbon::now()->addHours(5));
             }));
@@ -149,7 +147,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
     public function it_can_schedule_a_closure()
     {
         $closure = function () {
-            print 1 + 10;
+            echo 1 + 10;
         };
 
         $this->serializer
@@ -162,7 +160,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
             ->afterFiveMinutes()
             ->dispatch($closure);
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
             ->with('/cronboy/task/handle', 'POST', [RequestRunner::CLOSURE_PARAM_KEY => 'serialized closure'], m::on(function ($time_to_execute) {
                 return $time_to_execute->eq(Carbon::now()->addMinutes(5));
             }));
@@ -183,7 +181,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
             ->afterFiveMinutes()
             ->dispatch($job);
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
             ->with(
                 '/cronboy/task/handle', 'POST', [RequestRunner::JOB_PARAM_KEY => 'serialized job'],
                 m::on(function ($time_to_execute) {
@@ -197,8 +195,8 @@ class CronboyTest extends PHPUnit_Framework_TestCase
     {
         $this->expectException(\Cronboy\Cronboy\Exceptions\InvalidArgumentException::class);
 
-        $this->cronboy->afterFiveMinutes()->dispatch("Invalid parameter");
-     }
+        $this->cronboy->afterFiveMinutes()->dispatch('Invalid parameter');
+    }
 
     /** @test */
     public function it_can_receive_a_time_to_execute_in_specified_timezone()
@@ -207,7 +205,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
             ->afterFiveMinutes('America/Denver')
             ->call('/webhook-url', []);
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
             ->with(
                 '/webhook-url', 'POST', [],
                 m::on(function ($time_to_execute) {
@@ -223,7 +221,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
             ->via('GET')
             ->call('/webhook-url', []);
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
             ->with(
                 '/webhook-url', 'GET', [], m::type(Carbon::class)
             );
@@ -239,7 +237,7 @@ class CronboyTest extends PHPUnit_Framework_TestCase
         $this->cronboy->aMonthLater()
             ->call('/webhook-url', []);
 
-        $this->cronboySaaSClient->shouldHaveReceived("createJob")
+        $this->cronboySaaSClient->shouldHaveReceived('createJob')
             ->with(
                 '/webhook-url', 'GET', [], m::type(Carbon::class)
             )->once();
@@ -247,16 +245,17 @@ class CronboyTest extends PHPUnit_Framework_TestCase
 
     /**
      * @param Carbon|string $time_to_execute
+     *
      * @return array
      */
     private function scheduleParameters($time_to_execute = null)
     {
         return [
-            'url' => '/notify_me_after_one_minute',
+            'url'             => '/notify_me_after_one_minute',
             'time_to_execute' => $time_to_execute,
-            'params' => [
-                'message' => 'Hello i am a webhook after one minute'
-            ]
+            'params'          => [
+                'message' => 'Hello i am a webhook after one minute',
+            ],
         ];
     }
 }

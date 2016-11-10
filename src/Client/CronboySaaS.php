@@ -3,26 +3,23 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 9/29/16
- * Time: 2:13 AM
+ * Time: 2:13 AM.
  */
-
 namespace Cronboy\Cronboy\Client;
 
-
 use Carbon\Carbon;
-use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\Exception\ClientException;
-use Cronboy\Cronboy\Exceptions\InvalidArgumentException;
-use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;
 use Cronboy\Cronboy\Client\Exceptions\InvalidApiTokenException;
 use Cronboy\Cronboy\Client\Exceptions\InvalidAppKeyException;
 use Cronboy\Cronboy\Client\Exceptions\InvalidArgumentsException;
 use Cronboy\Cronboy\Client\Params\CreateJob;
 use Cronboy\Cronboy\Client\Responses\CreateJobResponse;
+use Cronboy\Cronboy\Exceptions\InvalidArgumentException;
+use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;
+use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\ClientException;
 
 /**
- * Class CronboySaaS
- * @package Cronboy\Cronboy\Client
+ * Class CronboySaaS.
  */
 class CronboySaaS
 {
@@ -43,6 +40,7 @@ class CronboySaaS
 
     /**
      * NotifierService constructor.
+     *
      * @param $api_token
      * @param $app_key
      * @param HttpClient $httpClient
@@ -60,11 +58,13 @@ class CronboySaaS
     /**
      * @param string $url
      * @param string $verb
-     * @param array $params
+     * @param array  $params
      * @param Carbon $time_to_execute
-     * @return CreateEventResponse
+     *
      * @throws InvalidApiTokenException
      * @throws InvalidAppKeyException
+     *
+     * @return CreateEventResponse
      */
     public function createJob($url, $verb, array $params, Carbon $time_to_execute)
     {
@@ -75,33 +75,34 @@ class CronboySaaS
         } catch (InvalidArgumentsException $e) {
             $this->throwArgumentsExceptionsIfTheCase($e);
         } catch (ClientException $e) {
-            # Get errors from response body
+            // Get errors from response body
             $errors = \GuzzleHttp\json_decode($e->getResponse()->getBody(), true);
 
-            # Throw a specific exception depends on the response
+            // Throw a specific exception depends on the response
             $this->throwInvalidApiTokenExceptionIfIsTheCase($e, $errors);
             $this->throwInvalidAppKeyExceptionIfIsTheCase($e, $errors);
 
-            # Rethrow Guzzle Exception if not specified error response was received
+            // Rethrow Guzzle Exception if not specified error response was received
             throw $e;
         }
     }
 
     /**
      * @param CreateJob $createJobParams
+     *
      * @return CreateEventResponse
      */
     private function makeCreateJobApiCall(CreateJob $createJobParams)
     {
         $options = [
             'query' => [
-                'api_token' => $this->getApiToken()
+                'api_token' => $this->getApiToken(),
             ],
-            'json' => $createJobParams->toArray()
+            'json' => $createJobParams->toArray(),
         ];
 
         return new CreateJobResponse(
-            $this->httpClient->post("api/v1/tasks/" . $this->getAppKey(), $options)
+            $this->httpClient->post('api/v1/tasks/'.$this->getAppKey(), $options)
         );
     }
 
@@ -132,29 +133,32 @@ class CronboySaaS
     /**
      * @param $e
      * @param $errors
+     *
      * @throws InvalidApiTokenException
      */
     private function throwInvalidApiTokenExceptionIfIsTheCase($e, $errors)
     {
         if ($e->getCode() == 401 && $errors['errors']['title'] == 'Unauthenticated.') {
-            throw new InvalidApiTokenException("Invalid <api token> is provided for Cronboy Service");
+            throw new InvalidApiTokenException('Invalid <api token> is provided for Cronboy Service');
         }
     }
 
     /**
      * @param $e
      * @param $errors
+     *
      * @throws InvalidAppKeyException
      */
     private function throwInvalidAppKeyExceptionIfIsTheCase($e, $errors)
     {
         if ($e->getCode() == 403 && $errors['errors']['title'] == 'Invalid application key is provided') {
-            throw new InvalidAppKeyException("Invalid <application key> is provided for Cronboy Service");
+            throw new InvalidAppKeyException('Invalid <application key> is provided for Cronboy Service');
         }
     }
 
     /**
      * @param InvalidArgumentsException $e
+     *
      * @throws InvalidArgumentException
      * @throws InvalidScheduleTimeException
      */

@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: stas
  * Date: 01.10.16
- * Time: 2:02
+ * Time: 2:02.
  */
-
 namespace Cronboy\Cronboy\Exceptions;
 
 use Exception;
 
 /**
- * Class MismatchingSignatureException
- * @package Cronboy\Cronboy\Exceptions
+ * Class MismatchingSignatureException.
  */
-class MismatchingSignatureException extends Exception {}
+class MismatchingSignatureException extends Exception
+{
+}

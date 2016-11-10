@@ -1,14 +1,14 @@
 <?php
 
-use Illuminate\Http\Request;
 use Cronboy\Cronboy\Services\RequestRunner;
+use Illuminate\Http\Request;
 
 Route::any('cronboy/task/handle', function (Request $request, RequestRunner $requestRunner) {
-    # Process a Job from Cronboy SaaS
+    // Process a Job from Cronboy SaaS
     $requestRunner->run($request);
 
     return response()
         ->json([
-            'status' => 'processed'
+            'status' => 'processed',
         ]);
 })->middleware(\Cronboy\Cronboy\Http\Middleware\VerifySignature::class);

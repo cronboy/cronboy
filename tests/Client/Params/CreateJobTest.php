@@ -3,16 +3,13 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/1/16
- * Time: 2:34 AM
+ * Time: 2:34 AM.
  */
-
-
 use Carbon\Carbon;
 use Cronboy\Cronboy\Client\Params\CreateJob;
 
-
 /**
- * Class CreateEventTest
+ * Class CreateEventTest.
  */
 class CreateJobTest extends Orchestra\Testbench\TestCase
 {
@@ -26,24 +23,22 @@ class CreateJobTest extends Orchestra\Testbench\TestCase
      */
     protected $params;
 
-    /**
-     *
-     */
+
     protected function setUp()
     {
         parent::setUp();
 
         $timeToExecute = Carbon::now()->addDay(1);
 
-        $this->json = '{"url":"\/test","verb":"POST","params":{"param1":"test"},"time_to_execute":"' . $timeToExecute->toDateTimeString() . '"}';
+        $this->json = '{"url":"\/test","verb":"POST","params":{"param1":"test"},"time_to_execute":"'.$timeToExecute->toDateTimeString().'"}';
 
         $this->params = [
-            'url' => '/test',
-            'verb' => 'POST',
+            'url'             => '/test',
+            'verb'            => 'POST',
             'time_to_execute' => $timeToExecute,
-            'params' => [
-                'param1' => 'test'
-            ]
+            'params'          => [
+                'param1' => 'test',
+            ],
         ];
     }
 

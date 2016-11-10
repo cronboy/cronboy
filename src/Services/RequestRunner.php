@@ -3,16 +3,14 @@
  * Created by PhpStorm.
  * User: stas
  * Date: 12.10.16
- * Time: 23:56
+ * Time: 23:56.
  */
-
 namespace Cronboy\Cronboy\Services;
 
 use Illuminate\Http\Request;
 
 /**
- * Class RequestRunner
- * @package Cronboy\Cronboy\Services
+ * Class RequestRunner.
  */
 class RequestRunner
 {
@@ -40,6 +38,7 @@ class RequestRunner
 
     /**
      * @param Request $request
+     *
      * @return mixed
      */
     public function run($request)
@@ -49,11 +48,13 @@ class RequestRunner
         } else {
             $taskAction = $this->serializer->unserializeJob($request->get(self::JOB_PARAM_KEY));
         }
+
         return $this->invoker->run($taskAction);
     }
 
     /**
      * @param Request $request
+     *
      * @return bool
      */
     protected function requestContainsClosure($request)
@@ -63,21 +64,25 @@ class RequestRunner
 
     /**
      * @param SerializerService $serializer
+     *
      * @return $this
      */
     public function setSerializer($serializer)
     {
         $this->serializer = $serializer;
+
         return $this;
     }
 
     /**
      * @param TaskActionInvoker $invoker
+     *
      * @return $this
      */
     public function setInvoker($invoker)
     {
         $this->invoker = $invoker;
+
         return $this;
     }
 }

@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: stas
  * Date: 12.10.16
- * Time: 0:11
+ * Time: 0:11.
  */
-
 namespace Cronboy\Cronboy\Exceptions;
 
 use Exception;
 
 /**
- * Class ClosureUnserializationException
- * @package Cronboy\Cronboy\Exceptions
+ * Class ClosureUnserializationException.
  */
-class ClosureUnserializationException extends Exception {}
+class ClosureUnserializationException extends Exception
+{
+}

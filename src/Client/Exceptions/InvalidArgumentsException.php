@@ -3,20 +3,18 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/1/16
- * Time: 2:09 AM
+ * Time: 2:09 AM.
  */
-
 namespace Cronboy\Cronboy\Client\Exceptions;
 
 use Exception;
 use Illuminate\Contracts\Support\MessageBag;
 
 /**
- * Class InvalidParamsArgumentsException
- * @package Cronboy\Cronboy\Client\Exceptions
+ * Class InvalidParamsArgumentsException.
  */
-class InvalidArgumentsException extends Exception {
-
+class InvalidArgumentsException extends Exception
+{
     /**
      * @var array
      */
@@ -30,14 +28,14 @@ class InvalidArgumentsException extends Exception {
     /**
      * InvalidArgumentsException constructor.
      *
-     * @param array $params
+     * @param array      $params
      * @param MessageBag $errors
-     * @param int $code
-     * @param Exception $previous
+     * @param int        $code
+     * @param Exception  $previous
      */
     public function __construct(array $params, MessageBag $errors, $code = 422, Exception $previous = null)
     {
-        parent::__construct("Wrong parameters set for cronboy request", $code, $previous);
+        parent::__construct('Wrong parameters set for cronboy request', $code, $previous);
         $this->params = $params;
         $this->errors = $errors;
     }

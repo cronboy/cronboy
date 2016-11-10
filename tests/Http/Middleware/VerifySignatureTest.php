@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Contracts\Config\Repository;
-use Illuminate\Support\Facades\Config;
+use \Mockery as m;
 use Cronboy\Cronboy\Http\Middleware\VerifySignature;
-
-/**
+/*
  * Created by PhpStorm.
  * User: stas
  * Date: 01.10.16
  * Time: 2:08
  */
-use \Mockery as m;
+use Illuminate\Contracts\Config\Repository;
 
 class VerifySignatureTest extends PHPUnit_Framework_TestCase
 {
@@ -57,8 +55,8 @@ class VerifySignatureTest extends PHPUnit_Framework_TestCase
             ->once()
             ->andReturn([
                 'signature' => 'foo',
-                'param1' => 'val1',
-                'param2' => 'val2',
+                'param1'    => 'val1',
+                'param2'    => 'val2',
             ]);
         $next = function () {
             throw new \Exception('$next executed');
@@ -87,8 +85,8 @@ class VerifySignatureTest extends PHPUnit_Framework_TestCase
             ->once()
             ->andReturn([
                 'signature' => 'a1e76366f3f5145bea359c04494225e85df7e4cee1cf31e7a7a6ca724e7643aa',
-                'param1' => 'val1',
-                'param2' => 'val2',
+                'param1'    => 'val1',
+                'param2'    => 'val2',
             ]);
         $next = function () {
             throw new \Exception('$next executed');
@@ -119,8 +117,8 @@ class VerifySignatureTest extends PHPUnit_Framework_TestCase
             ->once()
             ->andReturn([
                 'signature' => 'a1e76366f3f5145bea359c04494225e85df7e4cee1cf31e7a7a6ca724e7643aa',
-                'param1' => 'val1',
-                'param2' => 'val2',
+                'param1'    => 'val1',
+                'param2'    => 'val2',
             ]);
         $next = function () {
             throw new \Exception('$next executed');

@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/6/16
- * Time: 2:51 AM
+ * Time: 2:51 AM.
  */
-
 namespace Cronboy\Cronboy\Client\Exceptions;
 
 use Exception;
 
 /**
- * Class InvalidApiTokenException
- * @package Cronboy\Cronboy\Client\Exceptions
+ * Class InvalidApiTokenException.
  */
-class InvalidApiTokenException extends Exception {}
+class InvalidApiTokenException extends Exception
+{
+}

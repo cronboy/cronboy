@@ -3,20 +3,19 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 10/5/16
- * Time: 2:23 AM
+ * Time: 2:23 AM.
  */
-
 use Carbon\Carbon;
-use GuzzleHttp\Psr7\Response;
-use Cronboy\Cronboy\Exceptions\InvalidArgumentException;
-use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;
+use Cronboy\Cronboy\Client\CronboySaaS;
 use Cronboy\Cronboy\Client\Exceptions\InvalidApiTokenException;
 use Cronboy\Cronboy\Client\Exceptions\InvalidAppKeyException;
-use Cronboy\Cronboy\Client\CronboySaaS;
+use Cronboy\Cronboy\Exceptions\InvalidArgumentException;
+use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;
 use Cronboy\Cronboy\Tests\stubs\CronboyApi;
+use GuzzleHttp\Psr7\Response;
 
 /**
- * Class CronboySaaSTest
+ * Class CronboySaaSTest.
  */
 class CronboySaaSTest extends Orchestra\Testbench\TestCase
 {
@@ -85,7 +84,7 @@ class CronboySaaSTest extends Orchestra\Testbench\TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         (new CronboySaaS($this->getApiToken(), $this->getAppKey()))->createJob('', 'PATCH', [], Carbon::now()->addDay(1));
-     }
+    }
 
     /** @test */
     public function it_throws_a_invalid_schedule_time_exception_when_the_time_before_now_is_passed()
@@ -112,6 +111,7 @@ class CronboySaaSTest extends Orchestra\Testbench\TestCase
 
     /**
      * @param Response $response
+     *
      * @return CronboySaaS
      */
     private function mockCronboySaaSClientWithTestResponse(Response $response)

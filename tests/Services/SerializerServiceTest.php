@@ -7,7 +7,7 @@ use Cronboy\Cronboy\Services\SerializerService;
  * Created by PhpStorm.
  * User: stas
  * Date: 11.10.16
- * Time: 1:52
+ * Time: 1:52.
  */
 class SerializerServiceTest extends PHPUnit_Framework_TestCase
 {
@@ -142,12 +142,12 @@ HEREDOC
             'null signature' => [
                 new DummyJob(),
                 null,
-                'O:8:"DummyJob":1:{s:8:"property";N;}'
+                'O:8:"DummyJob":1:{s:8:"property";N;}',
             ],
             'string signature' => [
                 new DummyJob('foo'),
                 'closure signature',
-                'O:8:"DummyJob":1:{s:8:"property";s:3:"foo";}'
+                'O:8:"DummyJob":1:{s:8:"property";s:3:"foo";}',
             ],
         ];
     }
@@ -175,6 +175,7 @@ class DummyJob implements \Illuminate\Contracts\Queue\Job
 
     /**
      * DummyJob constructor.
+     *
      * @param $property
      */
     public function __construct($property = null)
@@ -215,7 +216,8 @@ class DummyJob implements \Illuminate\Contracts\Queue\Job
     /**
      * Release the job back into the queue.
      *
-     * @param  int $delay
+     * @param int $delay
+     *
      * @return void
      */
     public function release($delay = 0)
@@ -266,7 +268,8 @@ class DummyJob implements \Illuminate\Contracts\Queue\Job
     /**
      * Call the failed method on the job instance.
      *
-     * @param  \Throwable $e
+     * @param \Throwable $e
+     *
      * @return void
      */
     public function failed($e)
