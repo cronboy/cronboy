@@ -1,7 +1,11 @@
 ## Laravel Cronboy
 ![Travis](https://api.travis-ci.org/cronboy/cronboy.svg?branch=master)
 ![StyleCI](https://styleci.io/repos/72890665/shield?branch=master)
-
+[![Latest Unstable Version](https://poser.pugx.org/cronboy/cronboy/v/unstable)](https://packagist.org/packages/cronboy/cronboy)
+[![Total Downloads](https://poser.pugx.org/cronboy/cronboy/downloads)](https://packagist.org/packages/cronboy/cronboy)
+[![Latest Stable Version](https://poser.pugx.org/cronboy/cronboy/v/stable)](https://packagist.org/packages/cronboy/cronboy)
+[![composer.lock](https://poser.pugx.org/cronboy/cronboy/composerlock)](https://packagist.org/packages/cronboy/cronboy)
+[![License](https://poser.pugx.org/cronboy/cronboy/license)](https://packagist.org/packages/cronboy/cronboy)
 
 The idea to publish a service like Cronboy appeared when we have build web service that schedule jobs for our internal project. We notice that handling such kind of jobs is a general pattern and is boring to write those code from scratch for every project which need to execute  this type of work. Is it interesting for laravel web developers?  **Please leave some feadback, ideas, or questions to the github issues if you can.**
 
