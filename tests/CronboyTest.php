@@ -262,7 +262,7 @@ class CronboyTest extends Orchestra\Testbench\TestCase
             ->call('/webhook-url', []);
 
         $this->assertEquals('CronboyDevelop createJob has been called', $taskId);
-     }
+    }
 
     /** @test */
     public function it_resets_cronboy_client_after_a_debug_call_was_performed()

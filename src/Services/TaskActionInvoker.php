@@ -8,7 +8,6 @@
 namespace Cronboy\Cronboy\Services;
 
 use Closure;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**

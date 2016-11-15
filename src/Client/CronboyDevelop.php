@@ -3,32 +3,26 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 11/12/16
- * Time: 2:11 AM
+ * Time: 2:11 AM.
  */
-
 namespace Cronboy\Cronboy\Client;
 
-
 use Carbon\Carbon;
-use Cronboy\Cronboy\Client\CreateEventResponse;
 use Cronboy\Cronboy\Client\Exceptions\InvalidApiTokenException;
 use Cronboy\Cronboy\Client\Exceptions\InvalidAppKeyException;
-use Cronboy\Cronboy\Client\Params;
-use Illuminate\Http\Request;
 use Cronboy\Cronboy\Services\ParamsSign;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 /**
- * Class CronboyDevelop
- * @package Iprojectss\Cron\Client
+ * Class CronboyDevelop.
  */
 class CronboyDevelop implements CronboyInterface
 {
-
     /**
      * @param string $url
      * @param string $verb
-     * @param array $params
+     * @param array  $params
      * @param Carbon $time_to_execute
      *
      * @throws InvalidApiTokenException
@@ -56,6 +50,7 @@ class CronboyDevelop implements CronboyInterface
      * @param $verb
      * @param array $params
      * @param $originalRequest
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     private function handleDevelopCall($url, $verb, array $params, $originalRequest)

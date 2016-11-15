@@ -8,9 +8,9 @@
 namespace Cronboy\Cronboy;
 
 use Carbon\Carbon;
+use Cronboy\Cronboy\Client\CronboyDevelop;
 use Cronboy\Cronboy\Client\CronboyInterface;
 use Cronboy\Cronboy\Client\CronboySaaS;
-use Cronboy\Cronboy\Client\CronboyDevelop;
 use Cronboy\Cronboy\Client\Exceptions\InvalidArgumentsException;
 use Cronboy\Cronboy\Exceptions\InvalidArgumentException;
 use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;
@@ -259,6 +259,7 @@ class Cronboy
     public function debug()
     {
         $this->cronboyClient = app(CronboyDevelop::class);
+
         return $this;
     }
 

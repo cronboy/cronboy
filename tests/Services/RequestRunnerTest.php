@@ -36,7 +36,7 @@ class RequestRunnerTest extends Orchestra\Testbench\TestCase
     public function it_unserializes_and_runs_job()
     {
         $serializer = new \Cronboy\Cronboy\Services\SerializerService();
-        $serializedJob = $serializer->serializeJob(new RequestRunnerDummyJob);
+        $serializedJob = $serializer->serializeJob(new RequestRunnerDummyJob());
 
         $request = new \Illuminate\Http\Request([], [
             'job' => $serializedJob,

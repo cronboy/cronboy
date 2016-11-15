@@ -3,15 +3,12 @@
  * Created by PhpStorm.
  * User: vitsw
  * Date: 11/14/16
- * Time: 1:30 AM
+ * Time: 1:30 AM.
  */
-
-
 use Cronboy\Cronboy\Client\CronboyDevelop;
 
-
 /**
- * Class CronboyDevelopTest
+ * Class CronboyDevelopTest.
  */
 class CronboyDevelopTest extends Orchestra\Testbench\TestCase
 {

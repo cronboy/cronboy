@@ -10,11 +10,8 @@ namespace Cronboy\Cronboy\Client;
 use Carbon\Carbon;
 use Cronboy\Cronboy\Client\Exceptions\InvalidApiTokenException;
 use Cronboy\Cronboy\Client\Exceptions\InvalidAppKeyException;
-use Cronboy\Cronboy\Client\Exceptions\InvalidArgumentsException;
 use Cronboy\Cronboy\Client\Params\CreateJob;
 use Cronboy\Cronboy\Client\Responses\CreateJobResponse;
-use Cronboy\Cronboy\Exceptions\InvalidArgumentException;
-use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 
