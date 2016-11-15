@@ -1,0 +1,42 @@
+{
+    "name": "cronboy/cronboy",
+    "description": "Cronboy - Schedule Jobs For Laravel",
+    "keywords": ["cron", "cronboy", "enroll", "jobs", "schedule", "events", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vitalii Shwetz",
+            "email": "vitsw86@gmail.com"
+        },
+        {
+            "name": "Stanislav Dobrovoliskii",
+            "email": "uusername@protonmail.ch"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Cronboy\\Cronboy\\": "src/"
+        },
+        "files": ["src/helpers.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cronboy\\Cronboy\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "illuminate/support": "~5",
+        "illuminate/validation": "~5",
+        "illuminate/contracts": "~5",
+        "guzzlehttp/guzzle": "^6.2",
+        "nesbot/carbon": "^1.21",
+        "jeremeamia/superclosure": "^2.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.*",
+        "mockery/mockery": "0.9.5",
+        "orchestra/testbench": "^3.3"
+    }
+}
