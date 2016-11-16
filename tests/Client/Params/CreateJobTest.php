@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitsw
- * Date: 10/1/16
- * Time: 2:34 AM.
- */
+
 use Carbon\Carbon;
 use Cronboy\Cronboy\Client\Params\CreateJob;
 

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitsw
- * Date: 10/12/16
- * Time: 2:20 AM.
- */
+
 use Carbon\Carbon;
 use Cronboy\Cronboy\Cronboy;
 use Cronboy\Cronboy\Exceptions\InvalidScheduleTimeException;

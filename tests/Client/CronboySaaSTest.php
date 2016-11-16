@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitsw
- * Date: 10/5/16
- * Time: 2:23 AM.
- */
+
 use Carbon\Carbon;
 use Cronboy\Cronboy\Client\CronboySaaS;
 use Cronboy\Cronboy\Client\Exceptions\InvalidApiTokenException;

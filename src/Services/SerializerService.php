@@ -20,8 +20,6 @@ class SerializerService
     /**
      * SerializerService constructor.
      *
-     * @TODO refactor, $signature param is only used when working with \Closure methods
-     *
      * @param string $signature
      */
     public function __construct($signature = null)

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitsw
- * Date: 10/29/16
- * Time: 2:05 AM.
- */
+
 if (!function_exists('cronboy')) {
     /**
      * Helper function for create schedule webhooks with Cronboy SaaS Service.

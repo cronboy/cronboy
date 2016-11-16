@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitsw
- * Date: 10/14/16
- * Time: 2:08 AM.
- */
+
 namespace Cronboy\Cronboy\Tests\stubs;
 
 use Illuminate\Contracts\Queue\Job;

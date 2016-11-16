@@ -2,12 +2,6 @@
 
 use \Mockery as m;
 use Cronboy\Cronboy\Http\Middleware\VerifySignature;
-/*
- * Created by PhpStorm.
- * User: stas
- * Date: 01.10.16
- * Time: 2:08
- */
 use Illuminate\Contracts\Config\Repository;
 
 class VerifySignatureTest extends PHPUnit_Framework_TestCase

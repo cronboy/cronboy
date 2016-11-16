@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: stas
- * Date: 12.10.16
- * Time: 23:56.
- */
+
 namespace Cronboy\Cronboy\Services;
 
 use Illuminate\Http\Request;

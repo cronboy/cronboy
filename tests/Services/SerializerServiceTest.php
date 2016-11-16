@@ -1,14 +1,7 @@
 <?php
 
-
 use Cronboy\Cronboy\Services\SerializerService;
 
-/**
- * Created by PhpStorm.
- * User: stas
- * Date: 11.10.16
- * Time: 1:52.
- */
 class SerializerServiceTest extends PHPUnit_Framework_TestCase
 {
     /**

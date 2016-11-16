@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitsw
- * Date: 9/30/16
- * Time: 1:59 AM.
- */
+
 namespace Cronboy\Cronboy\Client\Params;
 
 use Carbon\Carbon;

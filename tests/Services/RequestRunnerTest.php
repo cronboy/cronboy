@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: stas
- * Date: 13.10.16
- * Time: 2:23.
- */
 class RequestRunnerTest extends Orchestra\Testbench\TestCase
 {
     /**

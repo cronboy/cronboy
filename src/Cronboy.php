@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitsw
- * Date: 10/12/16
- * Time: 2:18 AM.
- */
+
 namespace Cronboy\Cronboy;
 
 use Carbon\Carbon;
@@ -46,7 +41,7 @@ class Cronboy
     /**
      * Scheduler constructor.
      *
-     * @param CronboyInterface  $cronboyClient
+     * @param CronboyInterface $cronboyClient
      * @param SerializerService $serializer
      */
     public function __construct(CronboyInterface $cronboyClient, SerializerService $serializer)
@@ -57,7 +52,7 @@ class Cronboy
     }
 
     /**
-     * @param Carbon|string       $timeToExecute
+     * @param Carbon|string $timeToExecute
      * @param string|DateTimeZone $timezone
      *
      * @return $this
@@ -186,25 +181,9 @@ class Cronboy
     }
 
     /**
-     * Initialize state for next call method invoke.
-     */
-    protected function reset()
-    {
-        // Reset schedule time for another call
-        $this->scheduleTime = null;
-        // Reset verb to default value
-        $this->verb = 'POST';
-
-        // Reset cronboyClient
-        if ($this->cronboyClient instanceof CronboyDevelop) {
-            $this->cronboyClient = app(CronboySaaS::class);
-        }
-    }
-
-    /**
      * @param $url
      * @param array $params
-     * @param null  $time
+     * @param null $time
      *
      * @throws InvalidScheduleTimeException
      *
@@ -261,6 +240,22 @@ class Cronboy
         $this->cronboyClient = app(CronboyDevelop::class);
 
         return $this;
+    }
+
+    /**
+     * Initialize state for next call method invoke.
+     */
+    protected function reset()
+    {
+        // Reset schedule time for another call
+        $this->scheduleTime = null;
+        // Reset verb to default value
+        $this->verb = 'POST';
+
+        // Reset cronboyClient
+        if ($this->cronboyClient instanceof CronboyDevelop) {
+            $this->cronboyClient = app(CronboySaaS::class);
+        }
     }
 
     /**

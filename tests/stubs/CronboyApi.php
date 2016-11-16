@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitsw
- * Date: 10/5/16
- * Time: 2:34 AM.
- */
+
 namespace Cronboy\Cronboy\Tests\stubs;
 
 use GuzzleHttp\Client;
