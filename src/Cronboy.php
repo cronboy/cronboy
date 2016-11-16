@@ -41,7 +41,7 @@ class Cronboy
     /**
      * Scheduler constructor.
      *
-     * @param CronboyInterface $cronboyClient
+     * @param CronboyInterface  $cronboyClient
      * @param SerializerService $serializer
      */
     public function __construct(CronboyInterface $cronboyClient, SerializerService $serializer)
@@ -52,7 +52,7 @@ class Cronboy
     }
 
     /**
-     * @param Carbon|string $timeToExecute
+     * @param Carbon|string       $timeToExecute
      * @param string|DateTimeZone $timezone
      *
      * @return $this
@@ -183,7 +183,7 @@ class Cronboy
     /**
      * @param $url
      * @param array $params
-     * @param null $time
+     * @param null  $time
      *
      * @throws InvalidScheduleTimeException
      *

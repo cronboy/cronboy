@@ -18,7 +18,6 @@ class CreateJobTest extends Orchestra\Testbench\TestCase
      */
     protected $params;
 
-
     protected function setUp()
     {
         parent::setUp();
