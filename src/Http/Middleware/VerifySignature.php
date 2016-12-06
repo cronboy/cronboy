@@ -45,7 +45,7 @@ class VerifySignature
         $receivedSign = array_get($params, 'signature');
 
         $builtSign = $this->signParams(
-            $this->configuration->get('cronboy.app_secret'), array_except($params, ['signature', 'key'])
+            $this->configuration->get('cronboy.secret'), array_except($params, ['signature', 'key'])
         );
 
         if ($receivedSign != $builtSign) {
