@@ -17,6 +17,6 @@ class CronboyDevelopTest extends Orchestra\Testbench\TestCase
             $this->assertEquals('process', request()->get('action'));
         });
 
-        $cronboyDevelopClient->createJob('route/to/execute', 'GET', ['id' => 233, 'action' => 'process'], Carbon\Carbon::now());
+        $cronboyDevelopClient->createJob('route/to/execute', 'GET', ['id' => 233, 'action' => 'process'], Carbon\Carbon::now()->addMinute());
     }
 }
