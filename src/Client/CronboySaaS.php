@@ -101,7 +101,7 @@ class CronboySaaS implements CronboyInterface
      */
     private function getUrl()
     {
-        return 'http://cron_saas_client.dev';
+        return 'https://cronboy.com';
     }
 
     /**
