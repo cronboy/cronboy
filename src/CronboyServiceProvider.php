@@ -24,7 +24,7 @@ class CronboyServiceProvider extends ServiceProvider
     public function boot()
     {
         //   config
-        $this->publishes([__DIR__.'/../config/cronboy.php' => config_path('cronboy.php')]);
+        $this->publishes([__DIR__.'/../config/cronboy.php' => config_path('cronboy.php')], 'config');
 
         //   routes
         $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
