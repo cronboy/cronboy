@@ -27,9 +27,7 @@ class CronboyServiceProvider extends ServiceProvider
         $this->publishes([__DIR__.'/../config/cronboy.php' => config_path('cronboy.php')]);
 
         //   routes
-        if (!$this->app->routesAreCached()) {
-            require __DIR__.'/Http/routes.php';
-        }
+        $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
     }
 
     /**
