@@ -42,7 +42,7 @@ class CronboyServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(CronboySaaS::class, function () {
-            return new CronboySaaS(config('cronboy.api_token'), config('cronboy.app_key'));
+            return new CronboySaaS(config('cronboy.token'), config('cronboy.app_key'));
         });
 
         $this->app->singleton(Cronboy::class, function ($app) {
