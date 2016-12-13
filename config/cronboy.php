@@ -4,6 +4,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application key
+    |--------------------------------------------------------------------------
+    |
+    | This application key is used by service for application identity
+    | you can find it in your Cronboy account
+    |
+    */
+
+    'app_key'        => 'paste here an application key',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Signature key
+    |--------------------------------------------------------------------------
+    |
+    | This signature key is used by service to sign request params
+    | it is used for secure calls of your application endpoints
+    | you can find it in your Cronboy account
+    |
+    */
+
+    'signature_key'  => 'paste here a signature key',
+
+    /*
+    |--------------------------------------------------------------------------
     | API Token
     |--------------------------------------------------------------------------
     |
@@ -12,31 +37,6 @@ return [
     |
     */
 
-    'token'         => 'paste here an api token',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Secret Token
-    |--------------------------------------------------------------------------
-    |
-    | This secret token is used by service for request params signature
-    | it is used for secure calls of your application endpoints
-    | you can find it in your Cronboy account
-    |
-    */
-
-    'secret'        => 'paste here a secret key',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Id
-    |--------------------------------------------------------------------------
-    |
-    | This application id is used by service for application identity
-    | you can find it in your Cronboy account
-    |
-    */
-
-    'id'            => 'paste here an application key',
+    'token'          => 'paste here an api token',
 
 ];

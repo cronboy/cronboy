@@ -32,7 +32,7 @@ class CronboyDevelop implements CronboyInterface
         $params = $createJobParams['params'];
 
         $params['signature'] = ParamsSign::make(
-            $params, config('cronboy.app_secret')
+            $params, config('cronboy.signature_key')
         );
 
         $this->handleDevelopCall($url, $verb, $params, clone request());

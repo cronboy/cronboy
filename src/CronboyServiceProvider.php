@@ -47,7 +47,7 @@ class CronboyServiceProvider extends ServiceProvider
 
         $this->app->singleton(Cronboy::class, function ($app) {
             return new Cronboy(
-                app(CronboySaaS::class), new SerializerService(config('cronboy.app_secret'))
+                app(CronboySaaS::class), new SerializerService(config('cronboy.signature_key'))
             );
         });
     }

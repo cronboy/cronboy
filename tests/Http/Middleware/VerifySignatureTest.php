@@ -15,7 +15,7 @@ class VerifySignatureTest extends PHPUnit_Framework_TestCase
         $configAccessor = m::mock(Repository::class);
         $configAccessor
             ->shouldReceive('get')
-            ->with('cronboy.secret')
+            ->with('cronboy.signature_key')
             ->andReturn('');
 
         $r = m::mock('\StdClass');
@@ -40,7 +40,7 @@ class VerifySignatureTest extends PHPUnit_Framework_TestCase
         $configAccessor = m::mock(Repository::class);
         $configAccessor
             ->shouldReceive('get')
-            ->with('cronboy.secret')
+            ->with('cronboy.signature_key')
             ->andReturn('');
 
         $r = m::mock('\StdClass');
@@ -70,7 +70,7 @@ class VerifySignatureTest extends PHPUnit_Framework_TestCase
         $configAccessor = m::mock(Repository::class);
         $configAccessor
             ->shouldReceive('get')
-            ->with('cronboy.secret')
+            ->with('cronboy.signature_key')
             ->andReturn('sercret');
 
         $r = m::mock('\StdClass');
@@ -101,7 +101,7 @@ class VerifySignatureTest extends PHPUnit_Framework_TestCase
         $configAccessor
             ->shouldReceive('get')
             ->once()
-            ->with('cronboy.secret')
+            ->with('cronboy.signature_key')
             ->andReturn('sercret');
 
         $r = m::mock('\StdClass');
