@@ -11,7 +11,7 @@ The idea to publish a service like Cronboy appeared when we have build web servi
 
 -
 
-[Cronboy](http://cronboy.com) - is a distributed web service, that allows you to run scheduled jobs.
+[Cronboy](http://cronboy.net) - is a distributed web service, that allows you to run scheduled jobs.
 
 With Cronboy you can schedule a job execution in whatever time you want in the future. It creates, maintains, and reliably invokes scheduled work. Cronboy does not run any code. It only invokes code hosted elsewhere. Cronboy invokes jobs via HTTP/S endpoints or Messaging Queues. 
 
@@ -111,7 +111,7 @@ Now is time to privide required keys. First of all we need to publish cronboy co
 php artisan vendor:publish --provider="Cronboy\Cronboy\CronboyServiceProvider" --tag=config
 ```
 
-After that you will find configuration file `cronboy.php` in your application `config` folder. Copy and paste into keys from your [cronboy.com](http://cronboy.com) account
+After that you will find configuration file `cronboy.php` in your application `config` folder. Copy and paste into keys from your [cronboy.net](http://cronboy.net) account
 
 ```php
 <?php	
